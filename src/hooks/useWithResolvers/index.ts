@@ -1,5 +1,7 @@
 import {useRef} from 'react';
 
+
+
 const withResolvers = <S>() => {
 
   let resolve, reject;
@@ -16,8 +18,7 @@ const withResolvers = <S>() => {
 
 /**
  * @function useWithResolvers
- * @description 等待成功的异步
- * @returns {ReturnType<typeof Promisem.withResolver>}
+ * @description 等待成功异步
  */
 export default function useWithResolvers<S>() {
   const promise = useRef(withResolvers<S>());

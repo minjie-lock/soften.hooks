@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useCallback, useRef, useState } from 'react';
 
-import useFrequencyEffect from './useFrequencyEffect';
+import useFrequencyEffect from '../useFrequencyEffect';
 type GetStateAction<S> = () => S;
 type ResetStateAction = () => void;
 
@@ -11,16 +11,15 @@ type State<S> = [
   Dispatch<SetStateAction<S>>,
   GetStateAction<S>,
   ResetStateAction,
-  GetInitStateAction<S>,
-  Dispatch<SetStateAction<S>>,
 ];
 /**
- * @function useGetResetInitialSetState
- * @description 一次满足 useGetState 和 useResetState 和 useInitialState 和 useSetState
+ * @function useGetResetState
+ * @description 一次满足 useGetState 和 useResetState
  * @param initialState 初始值
  * @returns {State}
  */
-export default function useGetResetInitialSetState<S>(initialState: S): State<S> {
+export default function useGetResetState<S>(initialState: S): State<S> {
+  
   const [state, setState] = useState(initialState);
   const data = useRef<S>(initialState);
 
@@ -30,12 +29,7 @@ export default function useGetResetInitialSetState<S>(initialState: S): State<S>
     setState(initialState);
   }, []);
   
-  const setSetState = (value: S | ((value: S) => S)) => {
-    setState({
-      ...state,
-      ...value,
-    });
-  };
+;
   useFrequencyEffect(
     () => {
       data.current = state;
@@ -43,13 +37,11 @@ export default function useGetResetInitialSetState<S>(initialState: S): State<S>
     1,
     [state],
   );
-  const getInitState = () => data?.current as S;
+
   return [
     state,
     setState,
     getState,
     restState,
-    getInitState,
-    setSetState
   ];
 }
