@@ -23,7 +23,8 @@
     "baseUrl": "./",
     "types": [
       "@types/react",
-      "@types/react-dom"
+      "@types/react-dom",
+      "jest"
     ],
     "paths": {
       "*": [
@@ -41,7 +42,7 @@
   ],
   "include": [
     "src/**/*",
-    "rslib.config.ts"
+    "rslib.config.ts",
   ],
   "exclude": [
     "node_modules",
