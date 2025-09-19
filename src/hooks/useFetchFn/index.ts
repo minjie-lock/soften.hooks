@@ -1,6 +1,6 @@
 
 import { useRequest } from 'ahooks';
-import { message as info } from 'antd';
+import { message as info, MessageArgsProps } from 'antd';
 
 type FetchReturn = ReturnType<typeof useRequest>;
 
@@ -15,6 +15,13 @@ type BaseCode = (typeof BASE_CODE)[keyof typeof BASE_CODE];
 export type BaseResponseInfo<Data, CODE = BaseCode> = Promise<{
   code: CODE;
   data: Data;
+  /**
+   * 设置气泡类型
+   */
+  type?: MessageArgsProps['type'];
+  /**
+   * 当有 message 时，优先显示 message
+   */
   message: string;
 }>;
 
@@ -26,7 +33,7 @@ type FetchOptions<CODE, DATA> = {
    * 代表请求成功的状态码
    * 默认 200
   */
-  code?: CODE;
+  code?: CODE | void;
 
   message?: {
     /**
@@ -121,15 +128,15 @@ export default function useFetchFn<S extends unknown = unknown,
           successFn?.(take.data);
           await info.open({
             key,
-            content: success,
-            type: 'success',
+            content: take?.message || success,
+            type: take?.type || 'success',
           });
         } else {
           onError?.(take);
           await info.open({
             key,
-            content: error,
-            type: 'error',
+            content: take.message || error,
+            type: take.type || 'error',
           });
         }
         // info.destroy(key);

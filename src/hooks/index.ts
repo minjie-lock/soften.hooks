@@ -1,6 +1,6 @@
 export { default as useOnChangeValue } from './useOnChangeValue';
 export { default as useWithResolvers } from './useWithResolvers';
-export { default as useGetResetState } from './useGetResettate';
+export { default as useGetResetState } from './useGetResetState';
 export { default as useFrequencyEffect } from './useFrequencyEffect';
 export { default as useFetchFn } from './useFetchFn';
 export { default as useTransitionState } from './useTransitionState';

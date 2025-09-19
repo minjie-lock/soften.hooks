@@ -21,6 +21,7 @@ type State<S> = [
 export default function useGetResetState<S>(initialState: S): State<S> {
   
   const [state, setState] = useState(initialState);
+  const initial = useRef(initialState);
   const data = useRef<S>(initialState);
 
   const getState = () => data.current;
@@ -29,7 +30,6 @@ export default function useGetResetState<S>(initialState: S): State<S> {
     setState(initialState);
   }, []);
   
-;
   useFrequencyEffect(
     () => {
       data.current = state;
