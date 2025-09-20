@@ -1,7 +1,7 @@
 {
-  "name": "ask-hooks",
+  "name": "@soften/hooks",
   "private": false,
-  "version": "1.0.14",
+  "version": "0.0.1",
   "type": "module",
   "types": "./dist/src/index.d.ts",
   "exports": {

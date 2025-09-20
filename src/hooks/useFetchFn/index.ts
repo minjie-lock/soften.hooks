@@ -122,51 +122,34 @@ export default function useFetchFn<S extends unknown = unknown,
         duration: 0,
       });
       try {
-        // ing.onChange(true);
         const take = await fn(...args);
         if (take.code == code) {
           successFn?.(take.data);
-          await info.open({
+          info.open({
             key,
             content: take?.message || success,
             type: take?.type || 'success',
           });
         } else {
           onError?.(take);
-          await info.open({
+          info.open({
             key,
             content: take.message || error,
             type: take.type || 'error',
           });
         }
-        // info.destroy(key);
-        // ing.onChange(false)
+        info.destroy(key);
         return take
       } catch (err) {
-        if (typeof onError === 'function') return onError(err as BaseError);
-        // if (err instanceof AxiosError) {
-        //   if (err?.code === 'ECONNABORTED') {
-        //     await info.open({
-        //       key,
-        //       content: '请求超时',
-        //       type: 'error',
-        //     });
-        //   }
-        // } else {
-        //   await info.open({
-        //     key,
-        //     content: error,
-        //     type: 'error',
-        //   });
-        // }
-        await info.open({
+        if (typeof onError === 'function') {
+          onError(err as BaseError)
+        };
+        info.open({
           key,
           content: error,
           type: 'error',
         });
         return err;
-        // info.destroy(key);
-        // ing.onChange(false)
       }
     },
     {

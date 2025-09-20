@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "ask-hooks",
+      "name": "@soften/hooks",
       "dependencies": {
         "ahooks": "^3.8.5",
         "antd": "^5.26.2",
