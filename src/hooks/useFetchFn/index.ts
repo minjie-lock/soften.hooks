@@ -138,7 +138,6 @@ export default function useFetchFn<S extends unknown = unknown,
             type: take.type || 'error',
           });
         }
-        info.destroy(key);
         return take
       } catch (err) {
         if (typeof onError === 'function') {

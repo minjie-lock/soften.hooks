@@ -6,3 +6,4 @@ export { default as useFetchFn } from './useFetchFn';
 export { default as useTransitionState } from './useTransitionState';
 export { default as useDeferredValueState } from './useDeferredValueState';
 export { default as useGetControllableValue } from './useGetControllableValue';
+export { default as useOptimisticalState } from './useOptimisticalState';
