@@ -1,11 +1,11 @@
-# ask-hooks
+# @SOFTEN/HOOKS
 业务类型 React Hooks 钩子
 ## useOnChangeValue
 - 同时兼备 value 和 onChange 函数的集合钩子
 - 可简化使用受控组件的步骤，少去 useState 和 onChange 函数定义的步骤
 
 ```ts
-  import { useOnChangeValue } from 'ask-hooks'
+  import { useOnChangeValue } from '@soften/hooks'
   function App() {
     const [state] = useOnChangeValue('');
     /**
@@ -27,7 +27,7 @@
 
 ```tsx 
 import { Modal } from "antd";
-import { useWithResolvers } from "ask-hooks"
+import { useWithResolvers } from "@soften/hooks"
 import { useImperativeHandle, forwardRef, useState } from 'react'
 
 const Dialog = forwardRef((props, ref) => {
@@ -63,7 +63,7 @@ export default Dialog;
 ```
 
 ```tsx
-  import { useWithResolvers } from 'ask-hooks'
+  import { useWithResolvers } from '@soften/hooks'
   import { useRef } from 'react';
   function App () {
     const list = [
