@@ -22,7 +22,7 @@ export type BaseResponseInfo<Data, CODE = BaseCode> = Promise<{
   /**
    * 当有 message 时，优先显示 message
    */
-  message: string;
+  message?: string;
 }>;
 
 export type Fn<S extends unknown, R> = (...args: S[]) => R;
